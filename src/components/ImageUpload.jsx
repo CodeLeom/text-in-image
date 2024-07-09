@@ -11,10 +11,12 @@ export default function ImageUpload() {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
 
+//   this function handles the file been added to state once upload is done
   const handleChange = (file) => {
     setFile(file);
   };
 
+//   function to analyze the image upload
   const handleAnalyzeImage = async () => {
     if (!file) {
       alert("No image available");
@@ -23,6 +25,7 @@ export default function ImageUpload() {
 
     setLoading(true);
     const formData = new FormData();
+    // the API can be used for other vision AI activity, so you need to define the operation
     formData.append("operation", "document_text_detection");
     formData.append("image", file);
 
@@ -46,6 +49,8 @@ export default function ImageUpload() {
   const renderTextAnnotations = () => {
     if (!apiRes || !apiRes.data || !apiRes.data.textAnnotations) return null;
 
+    // the response from the API is much, it firstly return all the text in the image
+    // then, it return each word, so, I just grab the first item in the response array
     const firstAnnotation = apiRes.data.textAnnotations[0];
     return <p>{firstAnnotation.description}</p>;
   };
@@ -58,6 +63,8 @@ export default function ImageUpload() {
         </div>
       )}
       <p>Drag your image into the box below or click the box to upload (Max size: 2mb)</p>
+     
+      {/* this library handles the file upload operation */}
       <FileUploader
         multiple={false}
         handleChange={handleChange}
@@ -65,6 +72,8 @@ export default function ImageUpload() {
         types={fileTypes}
         required={true}
       />
+
+    {/* conditional rendering to display buttons, and other texts */}
       <p>{file ? `File name: ${file.name}` : "no files uploaded yet"}</p>
       {file && <button onClick={handleAnalyzeImage}>Analyze Image</button>}
       {apiRes && apiRes.data && apiRes.data.textAnnotations && (
