@@ -1,0 +1,84 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #FC9902;
+}
+
+a::after {
+  color: #FC9902;
+}
+
+/* Responsive image */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 512px;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Custom loader */
+.custom-loader {
+  width: 40px;
+  height: 10px;
+  color: #FF9900;
+  background:
+    radial-gradient(farthest-side,currentColor 90%,#0000) left  /10px 10px,
+    radial-gradient(farthest-side,currentColor 90%,#0000) center/10px 10px,
+    radial-gradient(farthest-side,currentColor 90%,#0000) right /10px 10px,
+    linear-gradient(currentColor 0 0) center/100% 4px; 
+  background-repeat: no-repeat;
+  position: relative;
+  animation: s6 2s infinite linear;
+}
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+  inset:0;
+  background:inherit;
+  animation:inherit;
+  --s:calc(50% - 5px);
+  animation-direction: reverse;
+}
+.custom-loader:after {
+  --s:calc(5px - 50%);
+}
+
+@keyframes s6 {
+  0%   {transform: translate(var(--s,0)) rotate(0)}
+  100% {transform: translate(var(--s,0)) rotate(1turn)}
+}
