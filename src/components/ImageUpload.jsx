@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
-import "./styles.css";
-
-const fileTypes = ["JPEG", "PNG", "GIF"];
+const fileTypes = ["JPEG", "PNG", "JPG"];
 
 export default function ImageUpload() {
   const [file, setFile] = useState(null);
@@ -12,14 +10,15 @@ export default function ImageUpload() {
   };
   return (
     <div className="App">
-      <h1>Hello To Drag & Drop Files</h1>
+      <p>Drag your image into the box below or click the box to upload (Max size: 2mb)</p>
       <FileUploader
-        multiple={true}
+        multiple={false}
         handleChange={handleChange}
         name="file"
         types={fileTypes}
+        required={true}
       />
-      <p>{file ? `File name: ${file[0].name}` : "no files uploaded yet"}</p>
+      <p>{file ? `File name: ${file.name}` : "no files uploaded yet"}</p>
     </div>
   );
 }
