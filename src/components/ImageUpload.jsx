@@ -68,7 +68,7 @@ export default function ImageUpload() {
       <p>{file ? `File name: ${file.name}` : "no files uploaded yet"}</p>
       {file && <button onClick={handleAnalyzeImage}>Analyze Image</button>}
       {apiRes && apiRes.data && apiRes.data.textAnnotations && (
-        <div>
+        <div className="text-container">
           <strong>Text Detected:</strong>
           {renderTextAnnotations()}
         </div>

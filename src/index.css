@@ -8,13 +8,14 @@
   padding: 20px;
 }
 
-input {
-  margin: 10px;
-  padding: 10px 20px;
+.text-container{
+  width: 70vw;
+  margin: 20px;
+  line-height: 25px;
 }
 
 button {
-  margin: 10px;
+  margin: 20px;
   padding: 10px 20px;
   cursor: pointer;
 }
@@ -31,13 +32,6 @@ a {
 
 a::after {
   color: #FC9902;
-}
-
-/* Responsive image */
-.responsive-image {
-  width: 100%;
-  height: auto;
-  max-width: 512px;
 }
 
 /* Loading overlay */
